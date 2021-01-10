@@ -27,11 +27,7 @@ export default function Weather() {
           <button type="submit" className="btn btn-secondary mb-2">
             Search
           </button>
-          <button
-            type="submit"
-            className="btn btn-secondary mb-2"
-            id="geolocation"
-          >
+          <button type="submit" className="btn btn-secondary mb-2">
             My location
           </button>
         </form>
