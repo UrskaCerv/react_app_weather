@@ -1,6 +1,7 @@
 import React from "react";
 import "./App.css";
 import Weather from "./Weather";
+import Forecast from "./Forecast";
 
 export default function App() {
   return (
@@ -12,6 +13,7 @@ export default function App() {
         <img src="/img/green-01.png" alt="graphic" />
       </div>
       <div className="white">
+        <Forecast />
         <div className="row" id="forecast"></div>
       </div>
     </div>

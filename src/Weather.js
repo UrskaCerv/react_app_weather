@@ -1,5 +1,6 @@
 import React from "react";
 import "./Weather.css";
+import ReactAnimatedWeather from "react-animated-weather";
 
 export default function Weather() {
   let weatherData = {
@@ -48,11 +49,11 @@ export default function Weather() {
       </div>
       <div className="row">
         <div className="col-6">
-          <img
-            src={weatherData.imgUrl}
-            alt=""
-            id="icon-big"
-            className="float-left"
+          <ReactAnimatedWeather
+            icon="FOG"
+            color="white"
+            size={150}
+            animate={false}
           />
         </div>
         <div className="col-6">
