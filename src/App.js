@@ -14,7 +14,17 @@ export default function App() {
       </div>
       <div className="white">
         <Forecast />
-        <div className="row" id="forecast"></div>
+      </div>
+      <div className="signature">
+        <small>
+          <a
+            href="https://github.com/UrskaCerv/react_app_weather"
+            target="_blank"
+          >
+            Open-source code
+          </a>{" "}
+          by Urska Cerv
+        </small>
       </div>
     </div>
   );
