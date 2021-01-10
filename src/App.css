@@ -1,38 +1,77 @@
 .App {
+  margin: 20px;
+}
+
+.weather-app {
+  font-family: "Josefin Sans", sans-serif;
+}
+
+.green {
+  background-color: #64958f;
+  border: solid 2.02px;
+  border-color: #64958f;
+  padding: 40px 40px 5px 40px;
+  margin: 10px auto 0 auto;
+  width: 500px;
+  display: block;
+  color: white;
+  border-radius: 10px 10px 0 0;
+}
+
+.white {
+  background-color: white;
+  color: #64958f;
+  border-right: solid 2.02px;
+  border-bottom: solid 2.02px;
+  border-left: solid 2.02px;
+  padding: 40px 40px 5px 40px;
+  margin: 0 auto 10px auto;
+  width: 500px;
+  display: block;
+  border-radius: 0 0 10px 10px;
+}
+
+img {
+  display: block;
+  margin: 0 auto;
+  width: 500px;
+}
+
+#temperature {
+  text-align: center;
+  padding: 5px 20px 0 20px;
+  font-size: 50px;
+}
+
+#information {
+  font-size: 15px;
+  margin: -100px 0 0 230px;
+}
+
+#forecast-image {
+  width: 50px;
+  display: block;
+  margin: 0 auto;
+  position: relative;
+}
+
+.change {
+  padding: 40px 0 0 0;
+}
+.day {
+  margin: 0px;
+}
+
+.next-days i {
+  display: block;
+  margin: 0;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.signature {
+  text-align: center;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.col-3 {
+  text-align: center;
 }
