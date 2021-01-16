@@ -1,6 +1,7 @@
 import React from "react";
 import "./Forecast.css";
 import ReactAnimatedWeather from "react-animated-weather";
+import axios from "axios";
 
 export default function Forecast() {
   return (

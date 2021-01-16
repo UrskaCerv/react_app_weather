@@ -7,7 +7,7 @@ export default function App() {
   return (
     <div className="weather-app">
       <div className="green">
-        <Weather />
+        <Weather defaultCity="Ljubljana" />
       </div>
       <div className="graphic">
         <img src="/img/green-01.png" alt="graphic" />
