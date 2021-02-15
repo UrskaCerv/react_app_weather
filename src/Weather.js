@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import FormattedDate from "./FormattedDate";
 import "./Weather.css";
 import ReactAnimatedWeather from "react-animated-weather";
 import axios from "axios";
@@ -10,12 +11,12 @@ export default function Weather(props) {
     console.log(response);
     setWeatherData({
       ready: true,
-      temperature: response.data.main.temp,
+      temperature: Math.round(response.data.main.temp),
       humidity: response.data.main.humidity,
-      date: "Monday, 13:10",
+      date: new Date(response.data.dt * 1000),
       description: response.data.weather[0].description,
       icon: "https://ssl.gstatic.com/onebox/weather/64/rain_light.png",
-      wind: response.data.wind.speed,
+      wind: Math.round(response.data.wind.speed),
       city: response.data.name,
       country: response.data.sys.country,
     });
@@ -55,7 +56,7 @@ export default function Weather(props) {
         </div>
         <div className="row" id="last-updated">
           <p>
-            Last updated: &nbsp; {weatherData.date}
+            Last updated: &nbsp; <FormattedDate date={weatherData.date} />
             <div id="location-and-time"></div>
           </p>
         </div>
@@ -71,7 +72,7 @@ export default function Weather(props) {
           <div className="col-6">
             <div className="row">
               <div className="col-6" id="temperature">
-                12°
+                {weatherData.temperature}°
               </div>
               <div className="col-6" id="choose">
                 <a href="/" id="celsius">

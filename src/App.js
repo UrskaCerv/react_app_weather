@@ -19,6 +19,7 @@ export default function App() {
         <small>
           <a
             href="https://github.com/UrskaCerv/react_app_weather"
+            rel="noreferrer"
             target="_blank"
           >
             Open-source code
