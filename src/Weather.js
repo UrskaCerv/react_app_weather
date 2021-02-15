@@ -14,7 +14,7 @@ export default function Weather(props) {
       humidity: response.data.main.humidity,
       date: new Date(response.data.dt * 1000),
       description: response.data.weather[0].description,
-      icon: "https://ssl.gstatic.com/onebox/weather/64/rain_light.png",
+      icon: response.data.weather[0].icon,
       wind: Math.round(response.data.wind.speed),
       city: response.data.name,
       country: response.data.sys.country,
