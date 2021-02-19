@@ -1,12 +1,12 @@
 .day {
-  margin: 0px;
+  margin: 10px;
 }
 
 .next-days {
   text-align: center;
 }
 
-.next-days i {
+.next-days canvas {
   display: block;
   margin: 0 auto;
 }

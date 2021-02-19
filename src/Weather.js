@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import WeatherInfo from "./WeatherInfo";
+import Forecast from "./Forecast";
 import "./Weather.css";
 import axios from "axios";
 
@@ -39,27 +40,35 @@ export default function Weather(props) {
   if (weatherData.ready) {
     return (
       <div className="Weather">
-        <div className="search" onSubmit={handleSubmit}>
-          <form className="row" id="change-city">
-            <div className="form-group mb-2"></div>
-            <div className="form-group mx-sm-3 mb-2">
-              <input
-                type="text"
-                className="form-control"
-                placeholder="Enter a city"
-                id="write-city"
-                onChange={handleCityChange}
-              />
-            </div>
-            <button type="submit" className="btn btn-secondary mb-2">
-              Search
-            </button>
-            <button type="submit" className="btn btn-secondary mb-2">
-              My location
-            </button>
-          </form>
+        <div className="green">
+          <div className="search" onSubmit={handleSubmit}>
+            <form className="row" id="change-city">
+              <div className="form-group mb-2"></div>
+              <div className="form-group mx-sm-3 mb-2">
+                <input
+                  type="text"
+                  className="form-control"
+                  placeholder="Enter a city"
+                  id="write-city"
+                  onChange={handleCityChange}
+                />
+              </div>
+              <button type="submit" className="btn btn-secondary mb-2">
+                Search
+              </button>
+              <button type="submit" className="btn btn-secondary mb-2">
+                My location
+              </button>
+            </form>
+          </div>
+          <WeatherInfo data={weatherData} />
         </div>
-        <WeatherInfo data={weatherData} />
+        <div className="graphic">
+          <img src="/img/green-01.png" alt="graphic" />
+        </div>
+        <div className="white">
+          <Forecast city={weatherData.city} data={weatherData} />
+        </div>
       </div>
     );
   } else {
