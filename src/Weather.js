@@ -19,6 +19,8 @@ export default function Weather(props) {
       wind: Math.round(response.data.wind.speed),
       city: response.data.name,
       country: response.data.sys.country,
+      lon: response.data.coord.lon,
+      lat: response.data.coord.lat,
     });
   }
 
@@ -35,6 +37,21 @@ export default function Weather(props) {
 
   function handleCityChange(event) {
     setCity(event.target.value);
+  }
+
+  function getCurrentLocation(event) {
+    event.preventDefault();
+    navigator.geolocation.getCurrentPosition(currentLocation);
+  }
+
+  function currentLocation(response) {
+    let latitude = response.coords.latitude;
+    let longitude = response.coords.longitude;
+    let apiKey = "1fd01a094c047ffda9a1022db88d180b";
+    let units = "metric";
+    let apiEndpoint = "https://api.openweathermap.org/data/2.5/weather";
+    let apiUrl = `${apiEndpoint}?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=${units}`;
+    axios.get(apiUrl).then(handleResponse);
   }
 
   if (weatherData.ready) {
@@ -56,7 +73,11 @@ export default function Weather(props) {
               <button type="submit" className="btn btn-secondary mb-2">
                 Search
               </button>
-              <button type="submit" className="btn btn-secondary mb-2 ml-2">
+              <button
+                type="submit"
+                className="btn btn-secondary mb-2 ml-2"
+                onClick={getCurrentLocation}
+              >
                 My location
               </button>
             </form>

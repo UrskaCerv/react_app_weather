@@ -1,5 +1,11 @@
 .day {
+  display: block;
   margin: 0;
+}
+.night {
+  margin: 0;
+  position: relative;
+  top: -20px;
 }
 
 .next-days {
