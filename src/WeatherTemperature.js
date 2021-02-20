@@ -14,7 +14,7 @@ export default function WeatherTemperature(props) {
 
   if (unit === "celsius") {
     return (
-      <div className="WeatherTemperature">
+      <div className="row WeatherTemperature">
         <div className="col-6" id="temperature">
           {props.celsius}°
         </div>

@@ -35,7 +35,7 @@ export default function Forecast(props) {
           <p>
             {getDayOfTheWeek(forecast.list[midnightIndex + 8 * 0].dt)}
             <br />
-            <ForecastIcon code={props.data.icon} />
+            <ForecastIcon className="icon" code={props.data.icon} />
             <strong>
               <span className="day" id="forecastTemperature">
                 {Math.round(forecast.list[midnightIndex + 4 + 8 * 0].main.temp)}

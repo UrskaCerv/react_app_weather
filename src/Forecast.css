@@ -1,5 +1,5 @@
 .day {
-  margin: 10px;
+  margin: 0;
 }
 
 .next-days {
@@ -8,5 +8,5 @@
 
 .next-days canvas {
   display: block;
-  margin: 0 auto;
+  margin: 0 10px;
 }
