@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import "./Forecast.css";
-import ForecastIcon from "./ForecastIcon";
-
 import axios from "axios";
+import ForecastPreview from "./ForecastPreview";
 
 export default function Forecast(props) {
   const [loaded, setLoaded] = useState(false);
@@ -13,98 +12,39 @@ export default function Forecast(props) {
     setLoaded(true);
   }
 
-  function getDayOfTheWeek(timestamp) {
-    var forecastDay = new Date();
-    forecastDay.setTime(timestamp * 1000);
-    forecastDay.toUTCString();
-    let dayIndex = forecastDay.getDay();
-    let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-    let forecastDayName = days[dayIndex];
-    return forecastDayName;
-  }
-
-  if (loaded) {
+  if (loaded && props.city === forecast.city.name) {
     let midnightIndex = 0;
     while (forecast.list[midnightIndex].dt_txt[12] !== "0") {
       midnightIndex++;
     }
-
     return (
-      <div className="row" id="forecast">
-        <div className="col-3" id="next-days">
-          <p>
-            {getDayOfTheWeek(forecast.list[midnightIndex + 8 * 0].dt)}
-            <br />
-            <ForecastIcon className="icon" code={props.data.icon} />
-            <strong>
-              <span className="day" id="forecastTemperature">
-                {Math.round(forecast.list[midnightIndex + 4 + 8 * 0].main.temp)}
-                °
-              </span>
-            </strong>
-            <br />
-            <span className="night" id="forecastTemperature">
-              {Math.round(forecast.list[midnightIndex + 2 + 8 * 0].main.temp)}°
-            </span>
-          </p>
-        </div>
-        <div className="col-3" id="next-days">
-          <p>
-            {getDayOfTheWeek(forecast.list[midnightIndex + 8 * 1].dt)}
-            <br />
-            <ForecastIcon code={props.data.icon} />
-            <strong>
-              <span className="day" id="forecastTemperature">
-                {Math.round(forecast.list[midnightIndex + 4 + 8 * 1].main.temp)}
-                °
-              </span>
-            </strong>
-            <br />
-            <span className="night" id="forecastTemperature">
-              {Math.round(forecast.list[midnightIndex + 2 + 8 * 1].main.temp)}°
-            </span>
-          </p>
-        </div>
-        <div className="col-3" id="next-days">
-          <p>
-            {getDayOfTheWeek(forecast.list[midnightIndex + 8 * 2].dt)}
-            <br />
-            <ForecastIcon code={props.data.icon} />
-            <strong>
-              <span className="day" id="forecastTemperature">
-                {Math.round(forecast.list[midnightIndex + 4 + 8 * 2].main.temp)}
-                °
-              </span>
-            </strong>
-            <br />
-            <span className="night" id="forecastTemperature">
-              {Math.round(forecast.list[midnightIndex + 2 + 8 * 2].main.temp)}°
-            </span>
-          </p>
-        </div>
-        <div className="col-3" id="next-days">
-          <p>
-            {getDayOfTheWeek(forecast.list[midnightIndex + 8 * 3].dt)}
-            <br />
-            <ForecastIcon code={props.data.icon} />
-            <strong>
-              <span className="day" id="forecastTemperature">
-                {Math.round(forecast.list[midnightIndex + 4 + 8 * 3].main.temp)}
-                °
-              </span>
-            </strong>
-            <br />
-            <span className="night" id="forecastTemperature">
-              {Math.round(forecast.list[midnightIndex + 2 + 8 * 3].main.temp)}°
-            </span>
-          </p>
-        </div>
+      <div className="WeatherForecast row">
+        <ForecastPreview
+          dataMin={forecast.list[midnightIndex + 8 * 0 + 2]}
+          dataMax={forecast.list[midnightIndex + 8 * 0 + 5]}
+          unit={props.unit}
+        />
+        <ForecastPreview
+          dataMin={forecast.list[midnightIndex + 8 * 1 + 2]}
+          dataMax={forecast.list[midnightIndex + 8 * 1 + 5]}
+          unit={props.unit}
+        />
+        <ForecastPreview
+          dataMin={forecast.list[midnightIndex + 8 * 2 + 2]}
+          dataMax={forecast.list[midnightIndex + 8 * 2 + 5]}
+          unit={props.unit}
+        />
+        <ForecastPreview
+          dataMin={forecast.list[midnightIndex + 8 * 3 + 2]}
+          dataMax={forecast.list[midnightIndex + 8 * 3 + 5]}
+          unit={props.unit}
+        />
       </div>
     );
   } else {
     let apiKey = "cddfb1e3d89e2258740a8f1797f07940";
     let apiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${props.city}&units=metric&appid=${apiKey}`;
     axios.get(apiUrl).then(handleForecast);
-    return "nothing";
+    return null;
   }
 }
